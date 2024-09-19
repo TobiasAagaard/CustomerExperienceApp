@@ -8,7 +8,8 @@ while (true)
     RunContactForm();
 
     Console.WriteLine();
-    Console.WriteLine("Klik på en knap, for at sende!");
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine("Klik på hvilken som helst knap, for at sende!");
     string? input = Console.ReadLine();
     Console.Clear();
 
@@ -18,14 +19,14 @@ while (true)
 static void RunContactForm()
 {
     //Variabler
-    string name = "";
+    string? name = "";
     string? message;
     int rating = 0;
     string? ratingInput;
 
 
     //Intro til Programmet
-
+    Console.ForegroundColor = ConsoleColor.White;
     Console.WriteLine("Tak for du kom, vi vil virkelig gerne vide hvad din oplevelse var hos os i Jagt & Vanvittigt");
     Console.WriteLine("");
 
@@ -42,6 +43,7 @@ static void RunContactForm()
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Du skal udfylde navn");
+            Console.WriteLine("");
         } 
     } 
 
