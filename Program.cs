@@ -65,8 +65,8 @@ static void RunContactForm()
 
     //Her beder vi om at få en andmeldse
 
-    Console.WriteLine("Hvad tænker du vi kunne gøre bedere for at vi kan give den bedste kunde oplevelse? ");
-    Console.Write("Skriv din: anmeldelse her: ");
+    Console.WriteLine("Hvordan var din oplevelse med at handle hos os?");
+    Console.Write("Skriv her: ");
     message = Console.ReadLine();
     Console.WriteLine("");
 
