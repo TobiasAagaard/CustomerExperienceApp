@@ -1,8 +1,6 @@
 ﻿
 // Her har vi et While loop som først starter vores program så når det har kørt beder den dig om at restart Programmet
-using System.ComponentModel;
-using System.ComponentModel.Design;
-using System.Reflection.Metadata.Ecma335;
+
 
 bool restart = true;
 
