@@ -42,7 +42,7 @@ For at installere og køre denne C#-applikation lokalt, følg disse trin:
     dotnet run
     ```
 
-6. Applikationen vil nu være kørende, og du kan tilgå den via terminalen eller eventuelt en GUI, afhængigt af hvordan din applikation er designet.
+6. Applikationen vil nu være kørende, og du kan tilgå den via terminalen.
 
 ## Licens
 Dette projekt er licenseret under MIT-licensen - se [LICENSE](LICENSE.txt) filen for detaljer.
