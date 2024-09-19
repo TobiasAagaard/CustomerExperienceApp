@@ -16,13 +16,33 @@ Når applikationen er startet, vil du se en formular, hvor du kan indtaste:
 
 Efter indsendelse gemmes oplysningerne i en tekstfil til senere analyse.
 
-## Bidrag
-Vi tager gerne imod bidrag! Hvis du ønsker at bidrage til projektet, følg venligst disse trin:
-1. Fork dette repository.
-2. Opret en ny branch (`git checkout -b feature/dit-feature-navn`).
-3. Udfør dine ændringer og commit dem (`git commit -m 'Tilføj feature'`).
-4. Push til branch (`git push origin feature/dit-feature-navn`).
-5. Opret en pull request.
+## Installation
+
+For at installere og køre denne C#-applikation lokalt, følg disse trin:
+
+1. Klon repository til din lokale maskine:
+    ```bash
+    git clone https://github.com/din-bruger/vores-customer-experience-app.git
+    ```
+
+2. Naviger til projektmappen:
+    ```bash
+    cd vores-customer-experience-app
+    ```
+
+3. Åbn projektet i din foretrukne IDE (Visual Studio, Rider, eller Visual Studio Code). Alternativt kan du bygge og køre projektet direkte fra kommandolinjen.
+
+4. For at bygge projektet med .NET CLI, kør følgende kommando:
+    ```bash
+    dotnet build
+    ```
+
+5. Når build-processen er fuldført, kan du køre applikationen med:
+    ```bash
+    dotnet run
+    ```
+
+6. Applikationen vil nu være kørende, og du kan tilgå den via terminalen eller eventuelt en GUI, afhængigt af hvordan din applikation er designet.
 
 ## Licens
 Dette projekt er licenseret under MIT-licensen - se [LICENSE](LICENSE.txt) filen for detaljer.
