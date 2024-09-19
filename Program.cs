@@ -1,13 +1,11 @@
 ﻿
-
-
 // Her har vi et While loop som først starter vores program så når det har kørt beder den dig om at restart Programmet
 while (true)
 {
     RunContactForm();
 
     Console.WriteLine();
-    Console.WriteLine("Klik Enter for at sende!");
+    Console.WriteLine("Klik på en knap, for at sende!");
     string? input = Console.ReadLine();
     Console.Clear();
 
@@ -62,6 +60,7 @@ static void RunContactForm()
 
     // Her sætter vi et variabel som sætter datoen som fillnavn
     string fileName = DateTime.Now.ToString("MM-dd-yy_HH-mm-ss") + ".txt";
+
     // Her bestemmer vi hvor vores filler skal gemmes.
     string filePath = Path.Combine(Directory.GetCurrentDirectory(), "Output", fileName);
 
@@ -84,8 +83,5 @@ static void RunContactForm()
 
 
     Console.WriteLine($"Tak for din tid, {name}! På gensyn.");
-
-
-
 
 }
