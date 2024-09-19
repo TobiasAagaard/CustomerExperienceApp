@@ -11,7 +11,8 @@ do
     Console.WriteLine();
     Console.ForegroundColor = ConsoleColor.Green;
     Console.WriteLine("Klik enter for at sende!");
-    
+    Console.ForegroundColor = ConsoleColor.White;
+
     ConsoleKeyInfo keyInfo = Console.ReadKey(); 
     Console.Clear();
 
@@ -94,7 +95,7 @@ static void RunContactForm()
 
 
     // Her sætter vi et variabel som sætter datoen som fillnavn
-    string fileName = DateTime.Now.ToString("MM-dd-yy_HH-mm-ss") + ".txt";
+    string fileName = DateTime.Now.ToString("MMMM-dd-yy_HH-mm-ss") + ".txt";
 
     // Her bestemmer vi hvor vores filler skal gemmes.
     string filePath = Path.Combine(Directory.GetCurrentDirectory(), "Output", fileName);
@@ -118,5 +119,7 @@ static void RunContactForm()
 
     Console.ForegroundColor = ConsoleColor.White;
     Console.WriteLine($"Tak for din tid, {name}! På gensyn.");
+
+
 
 }
