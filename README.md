@@ -20,7 +20,7 @@ Efter indsendelse gemmes oplysningerne i en tekstfil til senere analyse.
 
 For at installere og køre denne C#-applikation lokalt, følg disse trin:
 
-1. Klon repository til din lokale maskine:
+1. Klon repository ned på din lokale maskine:
     ```bash
     git clone https://github.com/din-bruger/vores-customer-experience-app.git
     ```
