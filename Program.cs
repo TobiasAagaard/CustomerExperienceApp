@@ -9,7 +9,7 @@ while (true)
 
     Console.WriteLine();
     Console.ForegroundColor = ConsoleColor.Green;
-    Console.WriteLine("Klik på hvilken som helst knap, for at sende!");
+    Console.WriteLine("Klik enter for at sende!");
     string? input = Console.ReadLine();
     Console.Clear();
 
