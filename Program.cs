@@ -4,18 +4,25 @@ using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Reflection.Metadata.Ecma335;
 
-while (true)
+bool restart = true;
+
+do 
 {
     RunContactForm();
 
     Console.WriteLine();
     Console.ForegroundColor = ConsoleColor.Green;
     Console.WriteLine("Klik enter for at sende!");
-    string? input = Console.ReadLine();
+    
+    ConsoleKeyInfo keyInfo = Console.ReadKey(); 
     Console.Clear();
 
+    if (keyInfo.Key == ConsoleKey.Escape)
+    {
+        restart = false;
+    }
 
-} 
+} while (restart); 
 
 static void RunContactForm()
 {
@@ -28,7 +35,7 @@ static void RunContactForm()
 
     //Intro til Programmet
     Console.ForegroundColor = ConsoleColor.White;
-    Console.WriteLine("Tak for du kom, vi vil virkelig gerne vide hvad din oplevelse var hos os i Jagt & Vanvittigt");
+    Console.WriteLine("Tak fordi du kom, vi vil virkelig gerne vide hvad din oplevelse var hos os i Jagt & Vanvittigt");
     Console.WriteLine("");
 
     // Tast dit navn i input
