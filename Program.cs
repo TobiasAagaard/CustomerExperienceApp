@@ -1,9 +1,8 @@
 ﻿
-//Variabel til at definer vores Restart variabel
-bool restart = true;
 
-// Her har vi et Do While loop som først starter vores program så når det har kørt beder den dig om at restart Programmet
-do
+
+// Her har vi et While loop som først starter vores program så når det har kørt beder den dig om at restart Programmet
+while (true)
 {
     RunContactForm();
 
@@ -13,7 +12,7 @@ do
     Console.Clear();
 
 
-} while (restart);
+} 
 
 static void RunContactForm()
 {
