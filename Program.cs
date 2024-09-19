@@ -1,5 +1,8 @@
 ﻿
 // Her har vi et While loop som først starter vores program så når det har kørt beder den dig om at restart Programmet
+using System.ComponentModel.Design;
+using System.Reflection.Metadata.Ecma335;
+
 while (true)
 {
     RunContactForm();
@@ -15,7 +18,7 @@ while (true)
 static void RunContactForm()
 {
     //Variabler
-    string? name;
+    string name = "";
     string? message;
     int rating = 0;
     string? ratingInput;
@@ -27,15 +30,27 @@ static void RunContactForm()
     Console.WriteLine("");
 
     // Tast dit navn i input
-    Console.Write("Tast dit navn: her: ");
-    name = Console.ReadLine();
-    Console.WriteLine("");
+    while (string.IsNullOrWhiteSpace(name))
+    {
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.Write("Tast dit navn her: ");
+        name = Console.ReadLine();
+        Console.WriteLine("");
+
+        //Error håndtering
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Du skal udfylde navn");
+        } 
+    } 
 
 
     // While Loop til vores rating 
     // Den checker hele tiden på om dens betingelser er opfyldt ellers køre den igen
     while (rating < 1 || rating > 5)
     {
+        Console.ForegroundColor = ConsoleColor.White;
         Console.Write("Hvor god var din oplevelse hos Jagt Vandvitigt mellem 1 - 5: ");
         ratingInput = Console.ReadLine();
         Console.WriteLine("");
@@ -43,8 +58,8 @@ static void RunContactForm()
         //Her siger vi at hvis ikke vi kan parse vores input ind som en Int eller hvis vores Int er mindre end 1 og Støre end 5 så skal vi give den her error
         if (!int.TryParse(ratingInput, out rating) || rating < 1 || rating > 5)
         {
-            Console.WriteLine("Du tastede forkert! Du skal taste et tal mellem 1 og 5.");
-            Console.WriteLine("-------------------------------------------------------");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Du tastede forkert! Din bedømmelse skal være fra 1 til 5.");
         }
     }
 
