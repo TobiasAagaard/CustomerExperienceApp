@@ -1,11 +1,15 @@
-﻿bool restart = true;
+﻿
+//Variabel til at definer vores Restart variabel
+bool restart = true;
 
+// Her har vi et Do While loop som først starter vores program så når det har kørt beder den dig om at restart Programmet
 do
 {
     RunContactForm();
 
+    Console.WriteLine();
     Console.WriteLine("Klik Enter for at sende!");
-    string input = Console.ReadLine();
+    string? input = Console.ReadLine();
     Console.Clear();
 
 
@@ -13,7 +17,7 @@ do
 
 static void RunContactForm()
 {
-
+    //Variabler
     string? name;
     string? message;
     int rating = 0;
@@ -47,6 +51,7 @@ static void RunContactForm()
         }
     }
 
+    //Her beder vi om at få en andmeldse
 
     Console.WriteLine("Hvad tænker du vi kunne gøre bedere for at vi kan give den bedste kunde oplevelse? ");
     Console.Write("Skriv din: anmeldelse her: ");
@@ -56,23 +61,26 @@ static void RunContactForm()
 
 
 
-
-    string fileName = DateTime.Now.ToString("MM-dd-yy_HH/mm/ss") + ".txt";
+    // Her sætter vi et variabel som sætter datoen som fillnavn
+    string fileName = DateTime.Now.ToString("MM-dd-yy_HH-mm-ss") + ".txt";
+    // Her bestemmer vi hvor vores filler skal gemmes.
     string filePath = Path.Combine(Directory.GetCurrentDirectory(), "Output", fileName);
 
+    // Dette er en If statement som kigger efter om du har en folder som hedder Output der hvor den skal være for at vi kan komme af med vores filler.
     if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "Output")))
     {
-
+        //Ellers vil den lave en selv
         Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "Output"));
 
     }
 
-
+    // Her er opsætningen på vores fill dokument 
     string fileContent = $"Navn: {name}\n" +
                      $"Rating (et til fem): {rating}\n" +
                      $"Anmeldelse: {message}\n" +
-                     $"indsendt dato: {DateTime.Now}\n";
+                     $"Indsendt dato: {DateTime.Now}\n";
 
+    //Her er functionen som spytter fillen ud 
     File.WriteAllText(filePath, fileContent);
 
 
@@ -82,11 +90,3 @@ static void RunContactForm()
 
 
 }
-
-
-
-RunContactForm();
-
-
-
-
