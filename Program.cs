@@ -1,5 +1,6 @@
 ﻿
 // Her har vi et While loop som først starter vores program så når det har kørt beder den dig om at restart Programmet
+using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Reflection.Metadata.Ecma335;
 
@@ -20,7 +21,7 @@ static void RunContactForm()
 {
     //Variabler
     string? name = "";
-    string? message;
+    string? message = "";
     int rating = 0;
     string? ratingInput;
 
@@ -42,7 +43,7 @@ static void RunContactForm()
         if (string.IsNullOrWhiteSpace(name))
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Du skal udfylde navn");
+            Console.WriteLine("Du skal skrive dit Navn!");
             Console.WriteLine("");
         } 
     } 
@@ -67,10 +68,22 @@ static void RunContactForm()
 
     //Her beder vi om at få en andmeldse
 
-    Console.WriteLine("Hvordan var din oplevelse med at handle hos os?");
-    Console.Write("Skriv her: ");
-    message = Console.ReadLine();
-    Console.WriteLine("");
+
+    while (string.IsNullOrWhiteSpace(message))
+    {
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("Hvordan var din oplevelse med at handle hos os?");
+        Console.Write("Skriv her: ");
+        message = Console.ReadLine();
+
+        if (string.IsNullOrWhiteSpace(message))
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Du skal udfylde med tekst!");
+            Console.WriteLine("");
+        }
+    }
+    
 
 
 
@@ -98,7 +111,7 @@ static void RunContactForm()
     //Her er functionen som spytter fillen ud 
     File.WriteAllText(filePath, fileContent);
 
-
+    Console.ForegroundColor = ConsoleColor.White;
     Console.WriteLine($"Tak for din tid, {name}! På gensyn.");
 
 }
