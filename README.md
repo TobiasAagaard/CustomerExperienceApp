@@ -25,4 +25,4 @@ Vi tager gerne imod bidrag! Hvis du ønsker at bidrage til projektet, følg venl
 5. Opret en pull request.
 
 ## Licens
-Dette projekt er licenseret under MIT-licensen - se [LICENSE](LICENSE) filen for detaljer.
+Dette projekt er licenseret under MIT-licensen - se [LICENSE](LICENSE.txt) filen for detaljer.
