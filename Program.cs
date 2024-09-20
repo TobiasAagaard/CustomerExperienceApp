@@ -1,7 +1,6 @@
 ﻿
 // Her har vi et While loop som først starter vores program så når det har kørt beder den dig om at restart Programmet
 
-
 bool restart = true;
 
 do 
@@ -54,7 +53,6 @@ static void RunContactForm()
         } 
     } 
 
-
     // While Loop til vores rating 
     // Den checker hele tiden på om dens betingelser er opfyldt ellers køre den igen
     while (rating < 1 || rating > 5)
@@ -74,7 +72,6 @@ static void RunContactForm()
 
     //Her beder vi om at få en andmeldse
 
-
     while (string.IsNullOrWhiteSpace(message))
     {
         Console.ForegroundColor = ConsoleColor.White;
@@ -89,10 +86,6 @@ static void RunContactForm()
             Console.WriteLine("");
         }
     }
-    
-
-
-
 
     // Her sætter vi et variabel som sætter datoen som fillnavn
     string fileName = DateTime.Now.ToString("MMMM-dd-yy_HH-mm-ss") + ".txt";
