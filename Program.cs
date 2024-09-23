@@ -7,7 +7,6 @@ bool restart = true;
 do 
 {
     RunContactForm();
-
     Console.WriteLine();
     Console.ForegroundColor = ConsoleColor.Green;
     Console.WriteLine("Klik enter for at sende!");
@@ -31,7 +30,6 @@ static void RunContactForm()
     int rating = 0;
     string? ratingInput;
 
-
     //Intro til Programmet
     Console.ForegroundColor = ConsoleColor.White;
     Console.WriteLine("Tak fordi du kom, vi vil virkelig gerne vide hvad din oplevelse var hos os i Jagt & Vanvittigt");
@@ -54,7 +52,6 @@ static void RunContactForm()
         } 
     } 
 
-
     // While Loop til vores rating 
     // Den checker hele tiden på om dens betingelser er opfyldt ellers køre den igen
     while (rating < 1 || rating > 5)
@@ -73,8 +70,6 @@ static void RunContactForm()
     }
 
     //Her beder vi om at få en andmeldse
-
-
     while (string.IsNullOrWhiteSpace(message))
     {
         Console.ForegroundColor = ConsoleColor.White;
@@ -89,10 +84,6 @@ static void RunContactForm()
             Console.WriteLine("");
         }
     }
-    
-
-
-
 
     // Her sætter vi et variabel som sætter datoen som fillnavn
     string fileName = DateTime.Now.ToString("MMMM-dd-yy_HH-mm-ss") + ".txt";
