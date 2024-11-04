@@ -1,18 +1,14 @@
-﻿
-// Her har vi et While loop som først starter vores program så når det har kørt beder den dig om at restart Programmet
+﻿bool restart = true;
 
-
-bool restart = true;
-
-do 
+do
 {
     RunContactForm();
     Console.WriteLine();
     Console.ForegroundColor = ConsoleColor.Green;
-    Console.WriteLine("Klik enter for at sende!");
+    Console.WriteLine("Klik Enter for at sende, eller Esc for at afslutte.");
     Console.ForegroundColor = ConsoleColor.White;
 
-    ConsoleKeyInfo keyInfo = Console.ReadKey(); 
+    ConsoleKeyInfo keyInfo = Console.ReadKey();
     Console.Clear();
 
     if (keyInfo.Key == ConsoleKey.Escape)
@@ -20,60 +16,64 @@ do
         restart = false;
     }
 
-} while (restart); 
+} while (restart);
 
 static void RunContactForm()
 {
-    //Variabler
-    string? name = "";
-    string? message = "";
-    int rating = 0;
-    string? ratingInput;
+    string name = GetName();
+    int rating = GetRating();
+    string message = GetMessage();
 
-    //Intro til Programmet
+    SaveFeedback(name, rating, message);
     Console.ForegroundColor = ConsoleColor.White;
-    Console.WriteLine("Tak fordi du kom, vi vil virkelig gerne vide hvad din oplevelse var hos os i Jagt & Vanvittigt");
-    Console.WriteLine("");
+    Console.WriteLine($"Tak for din tid, {name}! På gensyn.");
+}
 
-    // Tast dit navn i input
-    while (string.IsNullOrWhiteSpace(name))
+static string GetName()
+{
+    string name;
+    do
     {
         Console.ForegroundColor = ConsoleColor.White;
         Console.Write("Tast dit navn her: ");
         name = Console.ReadLine();
-        Console.WriteLine("");
-
-        //Error håndtering
         if (string.IsNullOrWhiteSpace(name))
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Du skal skrive dit Navn!");
-            Console.WriteLine("");
-        } 
-    } 
+            Console.WriteLine("Du skal skrive dit navn!");
+        }
+    } while (string.IsNullOrWhiteSpace(name));
 
-    // While Loop til vores rating 
-    // Den checker hele tiden på om dens betingelser er opfyldt ellers køre den igen
-    while (rating < 1 || rating > 5)
+    return name;
+}
+
+static int GetRating()
+{
+    int rating;
+    string? ratingInput;
+    do
     {
         Console.ForegroundColor = ConsoleColor.White;
-        Console.Write("Hvor god var din oplevelse hos Jagt Vandvitigt mellem 1 - 5: ");
+        Console.Write("Hvor god var din oplevelse hos Jagt & Vanvittigt (1 - 5): ");
         ratingInput = Console.ReadLine();
-        Console.WriteLine("");
 
-        //Her siger vi at hvis ikke vi kan parse vores input ind som en Int eller hvis vores Int er mindre end 1 og Støre end 5 så skal vi give den her error
         if (!int.TryParse(ratingInput, out rating) || rating < 1 || rating > 5)
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Du tastede forkert! Din bedømmelse skal være fra 1 til 5.");
+            Console.WriteLine("Din bedømmelse skal være fra 1 til 5.");
         }
-    }
+    } while (rating < 1 || rating > 5);
 
-    //Her beder vi om at få en andmeldse
-    while (string.IsNullOrWhiteSpace(message))
+    return rating;
+}
+
+static string GetMessage()
+{
+    string message;
+    do
     {
         Console.ForegroundColor = ConsoleColor.White;
-        Console.WriteLine("Hvordan var din oplevelse med at handle hos os?");
+        Console.WriteLine("Hvordan var din oplevelse?");
         Console.Write("Skriv her: ");
         message = Console.ReadLine();
 
@@ -81,36 +81,35 @@ static void RunContactForm()
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Du skal udfylde med tekst!");
-            Console.WriteLine("");
         }
-    }
+    } while (string.IsNullOrWhiteSpace(message));
 
-    // Her sætter vi et variabel som sætter datoen som fillnavn
+    return message;
+}
+
+static void SaveFeedback(string name, int rating, string message)
+{
     string fileName = DateTime.Now.ToString("MMMM-dd-yy_HH-mm-ss") + ".txt";
+    string outputDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Output");
 
-    // Her bestemmer vi hvor vores filler skal gemmes.
-    string filePath = Path.Combine(Directory.GetCurrentDirectory(), "Output", fileName);
-
-    // Dette er en If statement som kigger efter om du har en folder som hedder Output der hvor den skal være for at vi kan komme af med vores filler.
-    if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "Output")))
+    if (!Directory.Exists(outputDirectory))
     {
-        //Ellers vil den lave en selv
-        Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "Output"));
-
+        Directory.CreateDirectory(outputDirectory);
     }
 
-    // Her er opsætningen på vores fill dokument 
-    string fileContent = $"Navn: {name}\n" +
-                     $"Rating (et til fem): {rating}\n" +
-                     $"Anmeldelse: {message}\n" +
-                     $"Indsendt dato: {DateTime.Now}\n";
+    string filePath = Path.Combine(outputDirectory, fileName);
+    string fileContent = $"Navn: {name}\nRating: {rating}\nAnmeldelse: {message}\nIndsendt dato: {DateTime.Now}\n";
 
-    //Her er functionen som spytter fillen ud 
-    File.WriteAllText(filePath, fileContent);
-
-    Console.ForegroundColor = ConsoleColor.White;
-    Console.WriteLine($"Tak for din tid, {name}! På gensyn.");
-
-
-
+    try
+    {
+        File.WriteAllText(filePath, fileContent);
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine($"Din anmeldelse er gemt som '{fileName}' i mappen Output.");
+    }
+    catch (Exception ex)
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Der opstod en fejl ved gemning af anmeldelsen.");
+        Console.WriteLine($"Fejlbesked: {ex.Message}");
+    }
 }
